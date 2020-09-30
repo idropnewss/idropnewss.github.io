@@ -1,0 +1,585 @@
+(function () {
+  function unsupportedBrowser() {
+  try {
+    return navigator.userAgent.match(/MSIE [6789]\./)
+  } catch (e) {
+    return true;
+  }
+}
+
+function setText(element, text) {
+  element.textContent = text;
+}
+
+function windowHeight() {
+  return window.innerHeight ? window.innerHeight : document.documentElement.clientHeight;
+}
+
+function windowWidth() {
+  return window.innerWidth ? window.innerWidth : document.documentElement.clientWidth;
+}
+
+function smallScreen() {
+  return (windowWidth() < 540) || !!navigator.userAgent.match(/Android|iPod|iPhone/);
+}
+
+function tinyScreen() {
+  return (windowWidth() < 400) || !!navigator.userAgent.match(/Android|iPod|iPhone/);
+}
+
+function generateId() {
+  var id = "", i = 12;
+  while (i--) {
+    id += randChar()
+  }
+  return "s2vVs" +id;
+}
+
+function includeCSS() {
+  var css = document.getElementById('c9-styles');
+  if (!css) {
+    css = document.createElement('style');
+    css.id = 'c9-styles';
+    css.type = 'text/css';
+
+    var styles = "#c9-button, #c9-button *, #c9-popup, #c9-popup * {\n  -webkit-box-sizing: border-box; box-sizing: content-box;\n}\n\n#c9-button {\n  right: 10px;\n  position: fixed;\n  cursor: pointer;\n  z-index: 10000;\n  text-decoration: none;\n  user-select: none;\n  transition: top 0.3s, bottom 0.3s, left 0.3s, right 0.3s, background 0.3s, width 0.3s, opacity 0.3s; -moz-transition: top 0.3s, bottom 0.3s, left 0.3s, right 0.3s, background 0.3s, width 0.3s, opacity 0.3s; -webkit-transition: top 0.3s, bottom 0.3s, left 0.3s, right 0.3s, background 0.3s, width 0.3s, opacity 0.3s; -o-transition: top 0.3s, bottom 0.3s, left 0.3s, right 0.3s, background 0.3s, width 0.3s, opacity 0.3s; -ms-transition: top 0.3s, bottom 0.3s, left 0.3s, right 0.3s, background 0.3s, width 0.3s, opacity 0.3s;\n  font-family: helvetica, sans-serif;\n}\n\n#c9-remover {\n  top: 0;\n  right: 0;\n  padding: 2px 2px 2px 2px;\n  position: absolute;\n  line-height: 0.7;\n  font-size: 16px;\n  height: auto;\n  text-shadow: 0 -1px 1px rgba(0,0,0,0.5);\n  opacity: 0.6;\n  -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)\";\n  filter: alpha(opacity=60);\n  z-index: 10001;\n  text-decoration: none;\n}\n\n#c9-popup {\n  position: fixed;\n  left: 50%;\n  width: 540px;\n  padding: 5px;\n  margin-left: -270px;\n  background: #999;\n  background: rgba(255,255,255,0.5);\n  opacity: 0.1;\n  z-index: 150000;\n  transition: all 0.3s; -moz-transition: all 0.3s; -webkit-transition: all 0.3s; -o-transition: all 0.3s; -ms-transition: all 0.3s;\n}\n#c9-popup iframe {\n  border: none;\n  height: 101%;\n  width: 540px;\n  background: white;\n  margin: 0 !important;\n}\n#c9-popup.c9-shown {\n  opacity: 1;\n}\n\n#c9-blocker {\n  opacity: 0;\n  background: black;\n  transition: opacity 0.3s; -moz-transition: opacity 0.3s; -webkit-transition: opacity 0.3s; -o-transition: opacity 0.3s; -ms-transition: opacity 0.3s;\n  background: -webkit-radial-gradient(50% 50%, ellipse closest-corner, rgba(0,0,0,0.45) 1%, rgba(0,0,0,0.8) 100%);\n  background: -moz-radial-gradient(50% 50%, ellipse closest-corner, rgba(0,0,0,0.45) 1%, rgba(0,0,0,0.8) 100%);\n  background: -ms-radial-gradient(50% 50%, ellipse closest-corner, rgba(0,0,0,0.45) 1%, rgba(0,0,0,0.8) 100%);\n  background: radial-gradient(50% 50%, ellipse closest-corner, rgba(0,0,0,0.45) 1%, rgba(0,0,0,0.8) 100%);\n  height: 100%;\n  left: 0;\n  position: fixed;\n  cursor: pointer;\n  top: 0;\n  width: 100%;\n  z-index: 149999;\n  display: none;\n}\n\n#c9-close-blocker {\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 28px;\n  width: 24px;\n  font-size: 26px;\n  line-height: 28px;\n  color: #999;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n#c9-close-blocker:hover {\n  color: #ddd;\n}\n\n#c9-popup #c9-close-blocker {\n  top: 5px;\n  right: -7px;\n  display: none;\n}\n#c9-popup.c9-shown #c9-close-blocker {\n  display: block;\n}\n#c9-blocker.c9-shown {\n  -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)\";\n  filter: alpha(opacity=80);\n  opacity: 0.8;\n  display: block;\n}\n#c9-button.c9-bottom-left {\n  left: 10px;\n  right: auto;\n}\n#c9-button.c9-top-right {\n  bottom: auto;\n}\n#c9-button.c9-top-left {\n  left: 10px;\n  right: auto;\n  bottom: auto;\n}\n\n#c9-button.c9-center-right {\n  top: 50%;\n  bottom: auto;\n  right: 0;\n}\n#c9-button.c9-center-left {\n  top: 50%;\n  bottom: auto;\n  right: auto;\n  left: 0;\n}\n/* Shared text button styles */\n\n#c9-button.c9-center-right.c9-default, #c9-button.c9-center-right.c9-plain {\n  transform: rotate(-90deg); -moz-transform: rotate(-90deg); -webkit-transform: rotate(-90deg); -ms-transform: rotate(-90deg);\n  transform-origin: right bottom; -webkit-transform-origin: right bottom; -ms-transform-origin: right bottom;\n}\n#c9-button.c9-center-left.c9-default, #c9-button.c9-center-left.c9-plain {\n  transform: rotate(90deg); -moz-transform: rotate(90deg); -webkit-transform: rotate(90deg); -ms-transform: rotate(90deg);\n  transform-origin: left bottom; -webkit-transform-origin: left bottom; -ms-transform-origin: left bottom;\n}\n\n/* Remover base styles */\n#c9-remover:hover {\n  -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)\";\n  filter: alpha(opacity=80);\n  opacity: 0.8;\n}\n\n#c9-button.c9-no-tab {\n  display: none !important;\n}\n\n/* default styles */\n#c9-button.c9-default {\n  border-top: 6px solid transparent;\n  border-left: 6px solid transparent;\n  border-right: 6px solid transparent;\n  background: #aaa;\n  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);\n  border-radius: 15px 15px 0 0;\n}\n#c9-button.c9-default.c9-top-left, #c9-button.c9-default.c9-top-right {\n  top: -32px;\n  bottom: auto;\n}\n#c9-button.c9-default.c9-top-left.c9-shown, #c9-button.c9-default.c9-top-right.c9-shown {\n  top: 0;\n}\n#c9-button.c9-default.c9-bottom-left, #c9-button.c9-default.c9-bottom-right {\n  bottom: -32px;\n}\n#c9-button.c9-default.c9-bottom-left.c9-shown, #c9-button.c9-default.c9-bottom-right.c9-shown {\n  bottom: 0;\n}\n#c9-button.c9-default.c9-center-left {\n  left: -32px;\n}\n#c9-button.c9-default.c9-center-left.c9-shown {\n  left: 0;\n}\n#c9-button.c9-default.c9-center-right {\n  right: -32px;\n}\n#c9-button.c9-default.c9-center-right.c9-shown {\n  right: 0;\n}\n\n#c9-button.c9-default #c9-button-content {\n  border-radius: 10px 10px 0 0;\n  background: #F6F6F6;\n  color: #666;\n  display: block;\n  padding: 6px 12px;\n  height: 20px;\n  line-height: 22px;\n  font-size: 16px;\n  font-weight: bold;\n  text-align: center;\n}\n\n#c9-button.c9-default:hover {\n  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);\n}\n#c9-button.c9-top-left.c9-default, #c9-button.c9-top-right.c9-default {\n  border-top-width: 0;\n  border-bottom: 6px solid transparent;\n  border-left: 6px solid transparent;\n  border-right: 6px solid transparent;\n  border-radius: 0 0 15px 15px;\n}\n#c9-button.c9-top-left.c9-default #c9-button-content, #c9-button.c9-top-right.c9-default #c9-button-content {\n  border-radius: 0 0 10px 10px;\n}\n\n#c9-button.c9-default #c9-remover {\n  width: 0;\n  transition: opacity 0.3s, width 0.3s;\n  opacity: 0;\n  top: 6px;\n  position: absolute;\n  right: 5px;\n  background: #aaa;\n  height: 20px;\n  text-align: center;\n  color: white;\n  border-radius: 7px;\n  line-height: 20px;\n  text-shadow: 0 1px 1px rgba(0,0,0,0.2);\n  overflow: hidden;\n  padding: 0;\n  text-decoration: none;\n}\n#c9-button.c9-default #c9-remover:hover {\n  color: white;\n}\n#c9-button.c9-default.c9-removable #c9-button-content {\n  padding-left: 18px;\n  padding-right: 18px;\n  transition: padding 0.3s; -moz-transition: padding 0.3s; -webkit-transition: padding 0.3s; -o-transition: padding 0.3s; -ms-transition: padding 0.3s;\n}\n\n#c9-button.c9-default.c9-removable:hover #c9-button-content {\n  padding-left: 6px;\n  padding-right: 30px;\n}\n#c9-button.c9-default.c9-removable.c9-hover-lock #c9-button-content {\n  padding-left: 6px;\n  padding-right: 30px;\n}\n#c9-button.c9-default.c9-removable:hover #c9-remover {\n  -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)\";\n  filter: alpha(opacity=50);\n  opacity: 0.5;\n  width: 20px;\n}\n#c9-button.c9-default.c9-removable.c9-hover-lock #c9-remover {\n  -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)\";\n  filter: alpha(opacity=50);\n  opacity: 0.5;\n  width: 20px;\n}\n#c9-button.c9-default.c9-removable #c9-remover:hover {\n  -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)\";\n  filter: alpha(opacity=80);\n  opacity: 0.8;\n  color: white\n}\n\n/* Plain styles */\n#c9-button.c9-plain {\n  background: #cf4647;\n  font-weight: bold;\n  font-size: 20px;\n  text-align: center;\n  text-decoration: none;\n  color: white;\n  display: block;\n  height: 50px;\n  line-height: 50px;\n  bottom: -50px;\n}\n\n#c9-button.c9-plain #c9-button-content {\n  height: 50px;\n  line-height: 50px;\n  display: block;\n  padding: 0 10px;\n}\n\n#c9-button.c9-plain.c9-top-left, #c9-button.c9-plain.c9-top-right {\n  top: -50px;\n  bottom: auto;\n}\n\n#c9-button.c9-plain.c9-top-left.c9-shown, #c9-button.c9-plain.c9-top-right.c9-shown {\n  top: 0;\n}\n\n#c9-button.c9-plain.c9-bottom-left.c9-shown, #c9-button.c9-plain.c9-bottom-right.c9-shown{\n  bottom: 0;\n}\n\n#c9-button.c9-plain.c9-center-left {\n  left: -50px;\n}\n#c9-button.c9-plain.c9-center-left.c9-shown {\n  left: 0;\n}\n#c9-button.c9-plain.c9-center-right {\n  right: -50px;\n}\n#c9-button.c9-plain.c9-center-right.c9-shown {\n  right: 0;\n}\n\n#c9-button.c9-plain:hover {\n  -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)\";\n  filter: alpha(opacity=90);\n  opacity: 0.9;\n}\n\n#c9-button.c9-plain.c9-top-right, #c9-button.c9-plain.c9-bottom-right {\n  right: 0;\n}\n\n#c9-button.c9-plain.c9-top-left, #c9-button.c9-plain.c9-bottom-left {\n  left: 0;\n  right: auto;\n}\n\n#c9-button.c9-plain #c9-remover:hover {\n  color: white;\n}\n/* Image styles */\n#c9-button.c9-image {\n  opacity: 0;\n}\n#c9-button.c9-image img {\n  max-width: 100%;\n}\n#c9-button.c9-image.c9-shown {\n  opacity: 1;\n}\n#c9-button.c9-image #c9-remover {\n  display: none;\n}\n#c9-button.c9-image:hover #c9-remover {\n  display: block;\n}\n#c9-button.c9-image.c9-hover-lock #c9-remover {\n  display: block;\n}\n\n#c9-button.c9-image.c9-top-right, #c9-button.c9-image.c9-bottom-right {\n  right: 0;\n}\n\n#c9-button.c9-image.c9-top-left, #c9-button.c9-image.c9-bottom-left {\n  left: 0;\n  right: auto;\n}\n\n#c9-button.c9-image.c9-bottom-left, #c9-button.c9-image.c9-bottom-right {\n  bottom: 10px;\n}\n#c9-button.c9-image.c9-top-left, #c9-button.c9-image.c9-top-right {\n  top: 0;\n}\n#c9-button.c9-image #c9-remover:hover {\n  color: white;\n}\n\n/* Floating styles */\n\n#c9-button.c9-floating {\n  opacity: 0;\n}\n\n#c9-button.c9-floating.c9-shown {\n  opacity: 1;\n}\n#c9-button.c9-floating #c9-button-content {\n  padding: 16px 20px 14px;\n  font-size: 16px;\n  border-radius: 30px;\n  font-weight: bold;\n  background: #69C2E4;\n  color: white;\n  display: block;\n  transition: padding 0.3s; -moz-transition: padding 0.3s; -webkit-transition: padding 0.3s; -o-transition: padding 0.3s; -ms-transition: padding 0.3s;\n}\n#c9-button.c9-floating.c9-touch-device #c9-button-content {\n  padding: 15px 20px 15px;\n}\n#c9-button.c9-floating.c9-removable #c9-button-content {\n  padding-left: 25px;\n  padding-right: 25px;\n}\n#c9-button.c9-floating.c9-removable:hover #c9-button-content {\n  padding-left: 15px;\n  padding-right: 35px;\n}\n#c9-button.c9-floating.c9-removable.c9-hover-lock #c9-button-content {\n  padding-left: 15px;\n  padding-right: 35px;\n}\n#c9-button.c9-floating #c9-remover {\n  line-height: 18px;\n  width: 10px;\n  top: initial;\n  bottom: 14px;\n  right: 11px;\n  font-size: 20px;\n  opacity: 0;\n  text-shadow: none;\n  transition: opacity 0.3s;\n}\n#c9-button.c9-floating:hover {\n  opacity: 0.7;\n}\n\n#c9-button.c9-floating:hover #c9-remover {\n  display: block;\n  opacity: 1;\n}\n#c9-button.c9-floating.c9-hover-lock #c9-remover {\n  display: block;\n  opacity: 1;\n}\n\n\n#c9-button.c9-floating.c9-top-right, #c9-button.c9-floating.c9-bottom-right, #c9-button.c9-floating.c9-center-right {\n  right: 20px;\n}\n\n#c9-button.c9-floating.c9-top-left, #c9-button.c9-floating.c9-bottom-left, #c9-button.c9-floating.c9-center-left {\n  left: 20px;\n  right: auto;\n}\n\n#c9-button.c9-floating.c9-bottom-left, #c9-button.c9-floating.c9-bottom-right {\n  bottom: 10px;\n}\n#c9-button.c9-floating.c9-top-left, #c9-button.c9-floating.c9-top-right {\n  top: 10px;\n}\n\n/* Embed button */\nhtml body .w-entry-button {\n  outline: none;\n  overflow: hidden;\n  visibility: visible !important;\n  background-image: -webkit-linear-gradient(#28a0e5, #015e94);\n  background-image: -moz-linear-gradient(#28a0e5, #015e94);\n  background-image: -ms-linear-gradient(#28a0e5, #015e94);\n  background-image: -o-linear-gradient(#28a0e5, #015e94);\n  background-image: linear-gradient(#28a0e5, #015e94);\n  -webkit-font-smoothing: antialiased;\n  border: 0;\n  padding: 1px;\n  text-decoration: none;\n  -moz-border-radius: 5px;\n  -webkit-border-radius: 5px;\n  border-radius: 5px;\n  -moz-box-shadow: 0 1px 0 rgba(0,0,0,0.2);\n  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.2);\n  box-shadow: 0 1px 0 rgba(0,0,0,0.2);\n  -webkit-touch-callout: none;\n  -webkit-tap-highlight-color: transparent;\n  -moz-user-select: none;\n  -khtml-user-select: none;\n  -webkit-user-select: none;\n  -ms-user-select: none;\n  -o-user-select: none;\n  user-select: none;\n  cursor: pointer;\n  position: relative;\n  margin: 10px auto;\n  display: table;\n  text-align: center;\n}\nhtml body .w-entry-button::before {\n  content: '';\n  display: block;\n}\nhtml body .w-entry-button::after {\n  content: '';\n  display: block;\n}\n\nhtml body .w-entry-button::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\nhtml body .w-entry-button .w-entry-button-inner {\n  display: block;\n  position: relative;\n  padding: 0 16px;\n  height: 50px;\n  line-height: 48px;\n  background: #1275ff;\n  background-image: -webkit-linear-gradient(#7dc5ee, #008cdd 70%, #30a2e4);\n  background-image: -moz-linear-gradient(#7dc5ee, #008cdd 70%, #30a2e4);\n  background-image: -ms-linear-gradient(#7dc5ee, #008cdd 70%, #30a2e4);\n  background-image: -o-linear-gradient(#7dc5ee, #008cdd 70%, #30a2e4);\n  background-image: linear-gradient(#7dc5ee, #008cdd 70%, #30a2e4);\n  font-size: 20px;\n  color: #fff;\n  font-weight: bold;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);\n  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);\n  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);\n  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);\n  -moz-border-radius: 4px;\n  -webkit-border-radius: 4px;\n  border-radius: 4px;\n  left: auto;\n  top: auto;\n  width: auto;\n}\n\nhtml body .w-entry-button .w-entry-button-inner * { /* mangled span override */\n  display: inline;\n  left: auto;\n  top: auto;\n  position: static;\n  width: auto;\n  height: auto;\n  background: none;\n\n}\nhtml body a.w-entry-button:hover {\n  background: #005d93;\n}\nhtml body a.w-entry-button:active {\n  background: #005d93;\n}\nhtml body a.w-entry-button:active .w-entry-button-inner {\n  color: #eee;\n  background: #008cdd;\n  background-image: -webkit-linear-gradient(#008cdd, #008cdd 70%, #239adf);\n  background-image: -moz-linear-gradient(#008cdd, #008cdd 70%, #239adf);\n  background-image: -ms-linear-gradient(#008cdd, #008cdd 70%, #239adf);\n  background-image: -o-linear-gradient(#008cdd, #008cdd 70%, #239adf);\n  background-image: linear-gradient(#008cdd, #008cdd 70%, #239adf);\n  -moz-box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);\n  -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);\n  box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);\n}\n";
+
+    if (css.styleSheet) {
+      css.styleSheet.cssText = styles;
+    } else {
+      css.innerHTML = styles;
+    }
+
+    document.body.appendChild(css);
+  }
+}
+
+function setCookie(name, value) {
+  var cookie = name + "=" + encodeURIComponent(value) + "; path=/;";
+  if (window.navigator.userAgent.match("Chrom(e|ium)")) {
+    cookie = cookie + " SameSite=None; Secure";
+  }
+  document.cookie = cookie;
+}
+function getCookie(name) {
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(name + "=") == 0) return decodeURIComponent(c.substring((name + "=").length, c.length));
+  }
+  return null;
+}
+function removeCookie(name) {
+  document.cookie = name+'=; Max-Age=-99999999;';
+}
+
+function resetStyles(elem, styles) {
+  elem.style.margin = 0;
+  elem.style.padding = 0;
+
+  for (var style in styles) {
+    elem.style[style] = styles[style];
+  }
+}
+
+function addClass(elem, className) {
+  if (!(elem.className + '').match(new RegExp('( |^)' + className + '( |$)'))) {
+    elem.className = className + ' ' + elem.className;
+  }
+
+  return elem;
+}
+function hasClass(elem, className) {
+  return elem.className.match(new RegExp("(^| )" + className + "($| )"));
+}
+function removeClass(elem, className) {
+  elem.className = elem.className.replace(new RegExp('(^| )' + className + '( |$)'), ' ');
+  return elem;
+}
+
+function withEnterId(url) {
+  try {
+    return withParam(url, 'i', getCookie("GleamId"));
+  } catch (err) {
+    window.console && window.console.warn("Failed to set EnterId:", err)
+    return url;
+  }
+}
+
+function withGleamShareRef(url) {
+  var match = (/gsr=([%a-z0-9\-]+)/ig).exec(''+document.location.search)
+  if(match) {
+    return withParam(url, 'gsr', match[1])
+  } else {
+    return url;
+  }
+}
+
+
+function getClientId() {
+  var clientId = null;
+  if(window.ga && window.ga.getAll) {
+    ga.getAll().forEach(
+      function (tracker) {
+        if (!clientId && tracker && tracker.get('clientId')) {
+          clientId = tracker.get('clientId');
+        }
+      }
+    )
+  }
+  return clientId;
+}
+
+function withXDGA(url, xdgaEnabled) {
+  if (xdgaEnabled && getClientId()) {
+    return withParam(withParam(url, 'xdga', getClientId()), 'xdga_referrer', document.referrer.slice(0,1024));
+  } else {
+    return url;
+  }
+}
+
+function withLocationAndReferrer(url) {
+  var locationUrl = withParam(url, 'l', window.location.href);
+  return withParam(locationUrl, 'r', window.gleamReferrerOverride || document.referrer.slice(0,1024));
+}
+
+function withParam(url, name, value) {
+  var separator = url.match(/\?/) ? "&" : "?";
+
+  if (value !== null) {
+    return url + separator + name + '=' + encodeURIComponent(value);
+  } else {
+    return url;
+  }
+}
+
+function randChar() {
+  var i;
+
+  if (window.crypto && window.crypto.getRandomValues) {
+    var n = new Uint32Array(1);
+    window.crypto.getRandomValues(n);
+    i = (n[0] % 94) + 32;
+  } else {
+    i = ((Math.random() * 94) | 0) + 32;
+  }
+
+  return String.fromCharCode(i)
+}
+
+var attributes = ["width", "height", "href", "x", "y", "rx", "ry", "fill", "fill-opacity", "attributeName", "values", "dur", "repeatCount", "style", "begin"];
+
+function svgdom(query, attrs, childs) {
+  var match = query.match(/^([^#.]*)#?([^.$]*).?(\S*)/),
+      type = match[1] || "div",
+      id = match[2],
+      classes = match[3].replace(/\./g, " "),
+      element = document.createElementNS('http://www.w3.org/2000/svg', type);
+
+  if (attrs) {
+    for (var key in attrs) {
+      if (attrs.hasOwnProperty(key)) {
+        if (key === "id" || key === "innerHTML" || key === "value" || key === "src" || key === "className") {
+          element[key] = attrs[key];
+        } else {
+          if (attributes.indexOf(key) === -1) {
+            element.setAttributeNS('http://www.w3.org/2000/svg', key, attrs[key]);
+          } else {
+            element.setAttribute(key, attrs[key]);
+          }
+        }
+      }
+    }
+  }
+
+  id && element.setAttribute("id", id);
+  classes && element.setAttribute("class", classes);
+
+  childs && childs.forEach(function (child) {
+    element.appendChild(child);
+  });
+  return element;
+}
+
+function onPageComplete(callback) {
+  if (document.readyState == "complete") {
+    callback.call()
+  } else {
+    document.addEventListener("readystatechange", function () {
+      onPageComplete(callback);
+    });
+  }
+}
+
+function delayTabDisplay() {
+  return navigator.userAgent.match(/iPad|iPhone|iPod/i) &&navigator.userAgent.match(/AppleWebKit.*Safari/i) && !navigator.userAgent.match(/CriOS|Chrome/i);
+}
+
+function withGA(callback, xdgaWait) {
+  if(xdgaWait) {
+    var gaChecker, gaFallback;
+    var gaLoaded = function () {
+      clearInterval(gaChecker);
+      clearTimeout(gaFallback);
+        callback()
+    };
+
+    gaChecker = setInterval(function () {
+      if(typeof(window.ga) !== 'undefined') {
+        if(getClientId()) {
+          gaLoaded();
+        }
+      } else if (typeof(window._gaq) !== 'undefined') {
+        gaLoaded();
+      }
+    }, 100);
+
+    gaFallback = setTimeout(function () {
+      gaLoaded();
+      window.console && window.console.warn("No Google Analytics after 5 seconds. Loading widget without cross-domain analytics.")
+    }, 5000);
+  } else {
+      callback()
+  }
+}
+
+
+  if(unsupportedBrowser()) {
+    return;
+  }
+
+  var disableButton = true;
+  var allowScroll = false;
+  var testImage = "https://js.gleam.io/images/logo.svg";
+  var leaderboardPostfix = "";
+  var campaignKey = "s2vVs" + leaderboardPostfix;
+  var contentBlockedHeading = "Content Blocked";
+  var contentBlockedProblem = "A  browser setting or extension is currently blocking this content";
+  var contentBlockedSolution = "To continue to enter this Competition, simply:";
+  var contentBlockedButton = "Click to enter in a new window";
+  var widgetName = "Gleam";
+  var crossDomainGa = true;
+  var standAloneUrl = "https://gleam.io/s2vVs/idrop-news-apple-iphone-11-pro-max-giveaway";
+  var embedUrl = "https://gleam.io/s2vVs/embed";
+  var buttonText = "Enter Competition";
+  var sandbox = null;
+
+  var newFrame, oldArea;
+  var appClass = widgetName + 'Embed' + campaignKey,
+      smallScreenButton = !disableButton,
+      loadedMessageRegex = new RegExp("^" + widgetName + "Loaded" + campaignKey + "$"),
+      heightMessageRegex = new RegExp("^" + widgetName + "EmbedHeight" + campaignKey + "=(\\d+\\.?\\d*)$"),
+      callbackMessageRegex = new RegExp("^" + widgetName + "EmbedCallback=(.*)$"),
+      scrollToViewMessageRegex = new RegExp("^" + widgetName + "ScrollToView(" + campaignKey + ")=(\\d+\\.?\\d*)$"),
+      loginMessageRegex = new RegExp("^" + widgetName + "Login" + campaignKey + "$");
+
+  var loadFunction = function  (e) {
+    if(!newFrame.getAttribute('data-loaded-widget')) {
+      if(oldArea.parentNode) {
+        oldArea.parentNode.removeChild(oldArea);
+      }
+
+      newFrame.style.position = 'relative';
+      newFrame.style.left = '';
+      newFrame.setAttribute('data-loaded-widget', 'true');
+    }
+  };
+
+  function widget() {
+      return window[widgetName];
+  }
+
+  function forEmbeds(f) {
+    var elems = Array.prototype.slice.call(document.getElementsByClassName(appClass));
+    for(var i = 0; i < elems.length; i++) {
+      f.call(elems[i], i);
+    }
+  }
+
+  function replaceLink() {
+    var link = document.createElement('a');
+    addClass(link, 'w-entry-button');
+    link.innerHTML = "<span class='w-entry-button-inner'><span class='w-entry-text'>" + buttonText + "</span></span>";
+    return link;
+  }
+
+  function handleWidgetCallback(event) {
+    match = event.data.match(callbackMessageRegex)
+    if(!match) {
+      return
+    }
+
+    payload = JSON.parse(match[1])
+    if(window.onGleamEvent) {
+      window.onGleamEvent(payload)
+    }
+  }
+
+  function blockingCheckingFallback () {
+    var t = document.createElement("img");
+    t.src = testImage;
+    t.setAttribute("style", "visibility:hidden;left:-10000px;position:absolute;height:0")
+    t.onerror = function () {
+      var loaders = document.getElementsByClassName("e-widget-preloader");
+      for(var i = 0; i < loaders.length; i++) {
+        loaders[i].innerHTML = "<div class='e-widget-blocked' style='background:#EBEFF1;text-align:center;padding:20px;line-height:1.3;font-family:sans-serif;color:#666;font-size:20px;'> " +
+            "<h2 style='margin:20px 20px 17px; font-size:26px;line-height: 26px; color:rgb(102, 102, 102);text-transform:none;font-weight:normal;'></h2>" +
+            "<p style='margin:17px 20px 10px;font-size:14px'></p>" +
+            "<p style='margin:10px 20px 20px;font-size:14px'></p>" +
+            "<a style='margin:0 20px 20px;font-size:16px;display:inline-block;background-color:#1abc9c;color:white;text-decoration:none;padding:13px 19px;border-radius: 6px;' href='"+standAloneUrl+"' target='_blank'></a>" +
+            "</div>"
+        loaders[i].getElementsByTagName("h2")[0].textContent = contentBlockedHeading
+        loaders[i].getElementsByTagName("p")[0].textContent = contentBlockedProblem
+        loaders[i].getElementsByTagName("p")[1].textContent = contentBlockedSolution
+        loaders[i].getElementsByTagName("a")[0].textContent = contentBlockedButton
+      }
+    }
+    document.body.appendChild(t);
+  }
+
+  function handleEmbeds(height) {
+    forEmbeds(function (index) {
+      var standAloneLink;
+      var containerWidth = this.offsetWidth;
+
+      if((!height && smallScreenButton && (tinyScreen() || (containerWidth != 0 && containerWidth < 400))) || index !== 0) {
+        standAloneLink = replaceLink();
+        standAloneLink.setAttribute('href', withGleamShareRef(withLocationAndReferrer(withEnterId(standAloneUrl))));
+        if (!navigator.userAgent.match(/FBAN\/FBIOS|Instagram/)) {
+          standAloneLink.setAttribute('target', '_blank');
+        }
+        this.parentNode.replaceChild(standAloneLink, this);
+      } else {
+        if(this.nodeName.match(/div/i) || this.parentNode === null) {
+          oldArea = this;
+          removeExistingListener(campaignKey);
+          addListener(campaignKey);
+
+          newFrame = document.createElement('iframe');
+          newFrame.id = appClass;
+          newFrame.src = withXDGA(withGleamShareRef(withLocationAndReferrer(withEnterId(embedUrl))), crossDomainGa);
+          newFrame.setAttribute('allowfullscreen', 'true');
+          if(sandbox) {
+              newFrame.setAttribute('sandbox', sandbox)
+          }
+
+          newFrame.frameBorder = 0;
+
+          newFrame.setAttribute('style', ';position:absolute;left:-10000px;z-index:1;visibility:visible');
+          newFrame.className = this.className.replace(/e-widget-preloader/, '') + " e-embed-frame";
+          oldArea.style.minWidth = '320px';
+          if(oldArea.parentNode) {
+            wrapper = document.createElement('div')
+            wrapper.className = "e-widget-wrapper";
+            wrapper.appendChild(newFrame)
+            oldArea.parentNode.insertBefore(wrapper, oldArea);
+          }
+          oldArea.className = 'e-widget-preloader';
+
+          newFrame.style.webkitTransform = 'scale(1)';
+
+          // backup function incase the message doesn't get received
+          newFrame.setAttribute('loaded', loadFunction);
+          newFrame.onload = loadFunction;
+          newFrame.addEventListener('load', loadFunction, false);
+        } else if(height) {
+          var frame = this
+          frame.style.height = height+'px';
+        }
+      }
+    });
+  }
+
+  function getOffset(elem) {
+    var offsetTop = 0;
+    var offsetLeft = 0;
+    do {
+      if (!isNaN(elem.offsetTop)) {
+        offsetTop += elem.offsetTop;
+        offsetLeft += elem.offsetLeft;
+      }
+    } while (elem = elem.offsetParent);
+    return { top: offsetTop, left: offsetLeft };
+  }
+
+  function handleScrollToView(key, elementTop) {
+    var widget = document.getElementById(widgetName + "Embed" + key)
+    var widgetOffset = getOffset(widget)
+
+    var viewTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
+    var viewLeft = window.pageXOffset || (document.documentElement || document.body.parentNode || document.body).scrollLeft
+    if(viewTop - 50 > widgetOffset.top + elementTop) {
+      // Scroll to the element's position
+      window.scrollTo(viewLeft, widgetOffset.top + elementTop)
+    }
+  }
+
+  function multiLevel(a) {
+    for(var i = 0; i < a.length; a++) {
+        if(typeof(a[i]) === 'object') {
+            return true;
+        }
+    }
+    return false;
+}
+
+function campaignKeys() {
+    var scripts = document.getElementsByTagName('script');
+    var keys = [];
+    var unique = {};
+    var src, i, match;
+
+    for(i = 0; i < scripts.length; i++) {
+        src = scripts[i].getAttribute('src')+"";
+        match = src.match(/\/(.....)\/(embed|ol|trk)\.js/);
+        if(match && !unique[match[1]]) {
+            keys.push(match[1]);
+            unique[match[1]] = true;
+        }
+    }
+
+    return keys;
+}
+
+function parseVars(vars) {
+    var buf = [];
+    var callback = null;
+    var v, i;
+    if(typeof(vars) !== 'object') {
+        buf.push(vars);
+    } else {
+        if(multiLevel(vars)) {
+            for(i = 0; i < vars.length; i++) {
+                v = vars[i];
+                if (typeof(v) === 'object' && v.length > 1) {
+                    if(v[0] == 'callback' && typeof(v[1]) === 'function') {
+                        callback = v[1];
+                    } else {
+                        buf.push(encodeURIComponent(v[0]) + '=' + encodeURIComponent(v[1]));
+                    }
+                } else {
+                    buf.push(encodeURIComponent(v));
+                }
+            }
+        } else {
+            if(vars.length > 1) {
+                buf.push(encodeURIComponent(vars[0])+'='+encodeURIComponent(vars[1]));
+            } else {
+                buf.push(encodeURIComponent(vars[0]));
+            }
+        }
+    }
+
+    return { params: buf, callback: callback };
+}
+
+function push(vars) {
+
+    var debug = false;
+    var baseUrl = "https://gleam.io";
+    if(debug && typeof(console) != 'undefined') { console.log('Sending: ', vars) }
+
+    if(!getCookie('GleamId')) {
+        setCookie('GleamId', generateId());
+    }
+
+    if(getCookie('GleamId')) {
+        var config = parseVars(vars);
+
+        var src = baseUrl+'/track.js?i='+encodeURIComponent(getCookie('GleamId'))+
+            '&k='+campaignKeys().join(',')+
+            '&v='+encodeURIComponent(config.params.join('&'));
+
+        var f = document.createElement('script');
+        f.src = src;
+
+        f.onload = config.callback;
+
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(f, s);
+
+        if(window && window.addEventListener) {
+            window.addEventListener('message', function(e) {
+                if(e.data == 'request-prefill') {
+                    if(debug && typeof(console) != 'undefined') { console.log('Re-sending: ', vars) }
+                    var f2 = document.createElement('script');
+                    f2.src = src;
+
+                    f2.onload = vars.callback;
+
+                    f.parentNode.replaceChild(f2, f);
+                }
+            }, false);
+        }
+    }
+}
+
+function initGleamTracker() {
+    window.Gleam = { push: push, init: true }
+}
+
+if(typeof(Gleam) === 'undefined') {
+    initGleamTracker();
+} else if(typeof(Gleam.init) === 'undefined') {
+    var onLoadTracking = Gleam;
+    initGleamTracker();
+    Gleam.push(onLoadTracking);
+}
+
+
+  function timedRefresh(iframe) {
+    setTimeout(function () { iframe.setAttribute('src', iframe.src); }, 2000);
+  }
+
+  function removeExistingListener(key) {
+    if (typeof(widget()['embedListener' + key]) !== 'undefined') {
+      if (window.removeEventListener) {
+        window.removeEventListener("message", widget()['embedListener' + key], false);
+      } else if (window.detachEvent()) {
+        window.detachEvent("onmessage", widget()['embedListener' + key], false);
+      }
+    }
+  }
+
+  function addListener(key) {
+    widget()['embedListener'+key] = function (e) {
+      if(e && e.data && e.data.match) {
+
+        handleWidgetCallback(e)
+
+        if(e.data.match(heightMessageRegex)) {
+          handleEmbeds(e.data.match(heightMessageRegex)[1])
+        }
+
+        if(allowScroll && e.data.match(scrollToViewMessageRegex)) {
+          handleScrollToView(e.data.match(scrollToViewMessageRegex)[1], parseInt(e.data.match(scrollToViewMessageRegex)[2]))
+        }
+
+        if(e.data.match(loginMessageRegex)) {
+          match = e.data.match();
+
+          if (match) {
+            var iframes = document.getElementsByTagName("iframe");
+
+            for (var i = 0; i < iframes.length; i++) {
+              if (iframes[i].className && iframes[i].className.match(new RegExp("^" + widgetName + "Embed")) && !hasClass(iframes[i], widgetName + "Embed" + key)) {
+                timedRefresh(iframes[i]);
+              }
+            }
+          }
+        }
+
+        if(e.data.match(loadedMessageRegex)) {
+          loadFunction(e);
+        }
+      }
+    };
+
+    window.addEventListener("message", widget()['embedListener'+key], false);
+  }
+
+  includeCSS();
+  withGA(handleEmbeds, crossDomainGa);
+  blockingCheckingFallback();
+})();

@@ -1,0 +1,776 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-embed {
+  height: auto;
+  padding: 0px;
+  margin: 12px auto 16px;
+  text-align: center; }
+
+.wp-block-embed-facebook {
+  padding: 8px 0px;
+  background: #111; }
+
+.reverseForm {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 5% 0; }
+
+/**
+ * CSS for both Frontend+Backend.
+ */
+.divquote {
+  border-bottom: 5px #1b1b1b solid;
+  border-top: 5px #1b1b1b solid;
+  padding: 0 4%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGElEQVQYV2M8c+bMfxMTE0YGKIAziBcAAASJBAUY6lH7AAAAAElFTkSuQmCC) repeat;
+  margin: 0 auto 15px; }
+
+.coolquote {
+  -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(125deg, rgba(163, 0, 255, 0.95), rgba(236, 9, 119, 0.95), #ec6200);
+  background: -o-linear-gradient(125deg, rgba(163, 0, 255, 0.95), rgba(236, 9, 119, 0.95), #ec6200);
+  background: linear-gradient(-35deg, rgba(163, 0, 255, 0.95), rgba(236, 9, 119, 0.95), #ec6200);
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-clip: text;
+  font-size: 2.4rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -.021em;
+  line-height: 1.35;
+  text-align: center;
+  margin: 0 auto;
+  padding: 4%;
+  display: block;
+  -webkit-animation: hue;
+          animation: hue;
+  -webkit-animation-duration: 8s;
+          animation-duration: 8s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+@-webkit-keyframes hue {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg); }
+  100% {
+    -webkit-filter: hue-rotate(-110deg);
+            filter: hue-rotate(-110deg); } }
+
+@keyframes hue {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg); }
+  100% {
+    -webkit-filter: hue-rotate(-110deg);
+            filter: hue-rotate(-110deg); } }
+
+p.has-drop-cap:not(:focus):first-letter {
+  float: left;
+  font-weight: 700;
+  margin-right: 7px;
+  letter-spacing: -.03em;
+  margin-bottom: -.08em;
+  font-size: 3.8rem;
+  line-height: .875;
+  color: #000; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-embed {
+  height: auto;
+  padding: 0px;
+  margin: 12px auto 16px;
+  text-align: center; }
+
+.wp-block-embed-facebook {
+  padding: 8px 0px;
+  background: #111; }
+
+.reverseForm {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 5% 0; }
+
+.cm_btn {
+  display: block !important;
+  -ms-flex-pack: center;
+      justify-content: center;
+  color: #fff !important;
+  width: 92%;
+  max-width: 380px;
+  padding: .6em;
+  font-size: 1.32rem;
+  font-weight: 600 !important;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  text-align: center;
+  font-weight: 300;
+  text-shadow: 0px 1px 12px rgba(0, 0, 0, 0.6) !important;
+  margin: 14px auto;
+  border-radius: 4em;
+  background: #007aff;
+  background: -webkit-linear-gradient(315deg, #007aff, #4831ff) !important;
+  background: -o-linear-gradient(315deg, #007aff, #4831ff) !important;
+  background: linear-gradient(135deg, #007aff, #4831ff) !important; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-embed {
+  height: auto;
+  padding: 0px;
+  margin: 12px auto 16px;
+  text-align: center; }
+
+.wp-block-embed-facebook {
+  padding: 8px 0px;
+  background: #111; }
+
+.reverseForm {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 5% 0; }
+
+/**
+ * CSS for both Frontend+Backend.
+ */
+.image-container {
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin: 4px auto 12px; }
+  .image-container figure {
+    width: auto;
+    height: auto !important;
+    padding-bottom: 0px !important;
+    margin: 0px auto; }
+  .image-container img {
+    position: relative !important;
+    max-height: 606.762745781px;
+    -o-object-fit: contain;
+       object-fit: contain;
+    height: auto !important; }
+  .image-container .fig-wcaption .figcaption {
+    position: relative; }
+  .image-container.left {
+    float: left;
+    margin-right: 12px;
+    margin-left: 4%; }
+  .image-container.right {
+    float: right;
+    margin-left: 12px;
+    margin-right: 4%; }
+  .image-container.left, .image-container.right {
+    width: auto;
+    max-width: 50%; }
+    @media (max-width: 420px) {
+      .image-container.left, .image-container.right {
+        width: 100%;
+        max-width: 100%;
+        float: none;
+        margin: 12px auto; } }
+  .image-container-inline {
+    margin: 0 1px 0px 2px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle; }
+    .image-container-inline figure {
+      padding: 0px !important;
+      height: auto !important; }
+      .image-container-inline figure img {
+        position: relative !important; }
+  .image-container--dark {
+    max-width: 100%;
+    background: #171717;
+    margin: 4px auto 12px;
+    padding: 4%; }
+    .image-container--dark figure {
+      width: auto;
+      height: auto !important;
+      padding-bottom: 0px !important;
+      margin: 0px auto; }
+      .image-container--dark figure a {
+        color: '#bbbbbb'; }
+    .image-container--dark img {
+      position: relative !important;
+      max-height: 606.762745781px;
+      -o-object-fit: contain;
+         object-fit: contain;
+      height: auto !important; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-embed {
+  height: auto;
+  padding: 0px;
+  margin: 12px auto 16px;
+  text-align: center; }
+
+.wp-block-embed-facebook {
+  padding: 8px 0px;
+  background: #111; }
+
+.reverseForm {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 5% 0; }
+
+.content-main .sb, .sb {
+  max-width: 732px;
+  position: relative;
+  width: 100%;
+  margin: 0px auto 12px; }
+  .content-main .sb_bubble, .sb_bubble {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    background: -webkit-linear-gradient(135deg, #4831ff, #3b72ff);
+    background: -o-linear-gradient(135deg, #4831ff, #3b72ff);
+    background: linear-gradient(315deg, #4831ff, #3b72ff);
+    position: absolute;
+    top: 0px;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    text-align: center;
+    overflow: hidden; }
+    .content-main .sb_bubble:after, .sb_bubble:after {
+      content: attr(data-slide-count);
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-shadow: 0px 0px 1.5rem rgba(0, 0, 0, 0.62); }
+  .content-main .sb_h2, .sb_h2 {
+    font-size: 2rem;
+    line-height: 1.35;
+    margin: 16px auto;
+    padding-left: 3.8rem; }
+  .content-main .sb_img, .sb_img {
+    width: 100%; }
+  .content-main .sb_p, .sb_p {
+    max-width: 680px;
+    padding: 0 4%; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-embed {
+  height: auto;
+  padding: 0px;
+  margin: 12px auto 16px;
+  text-align: center; }
+
+.wp-block-embed-facebook {
+  padding: 8px 0px;
+  background: #111; }
+
+.reverseForm {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 5% 0; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-embed {
+  height: auto;
+  padding: 0px;
+  margin: 12px auto 16px;
+  text-align: center; }
+
+.wp-block-embed-facebook {
+  padding: 8px 0px;
+  background: #111; }
+
+.reverseForm {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 5% 0; }
+
+#cm-quiz-loader {
+  background: #000;
+  -webkit-filter: brightness(0);
+          filter: brightness(0);
+  height: auto;
+  min-height: 540px;
+  max-height: 800px;
+  overflow: hidden;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  -webkit-transition-delay: 1s;
+       -o-transition-delay: 1s;
+          transition-delay: 1s;
+  margin: 1.2em;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  -webkit-box-shadow: 0px 0px 1.56em -0.08em rgba(0, 0, 0, 0.78);
+          box-shadow: 0px 0px 1.56em -0.08em rgba(0, 0, 0, 0.78); }
+  #cm-quiz-loader li {
+    color: #ffff; }
+  @media (max-width: 1020px) {
+    #cm-quiz-loader {
+      margin-left: 0px;
+      margin-right: 0px;
+      border-radius: 0px; } }
+  #cm-quiz-loader.is-active {
+    max-height: 5000px;
+    -webkit-filter: brightness(1);
+            filter: brightness(1); }
+  #cm-quiz-loader .cm-quiz {
+    margin: 0px auto;
+    border-radius: 4px;
+    overflow: hidden; }
+    #cm-quiz-loader .cm-quiz-box {
+      margin-bottom: 0px; }
+  #cm-quiz-loader .cm-quiz-slide-ans {
+    list-style: none;
+    padding: 18px;
+    margin: auto auto 0px;
+    max-width: 100%; }
+    #cm-quiz-loader .cm-quiz-slide-ans li {
+      color: #fff;
+      margin: 16px 12.5%;
+      font-size: 1rem;
+      line-height: 1.35; }
+      @media (max-width: 720px) {
+        #cm-quiz-loader .cm-quiz-slide-ans li {
+          font-size: 3vw; } }
+      @media (max-width: 400px) {
+        #cm-quiz-loader .cm-quiz-slide-ans li {
+          font-size: 3.4vw; } }
+      #cm-quiz-loader .cm-quiz-slide-ans li:nth-of-type(2n) {
+        margin: 16px 3.125%; }
+      #cm-quiz-loader .cm-quiz-slide-ans li:nth-of-type(odd) {
+        margin: 16px 3.125%; }
+@charset "UTF-8";
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-embed {
+  height: auto;
+  padding: 0px;
+  margin: 12px auto 16px;
+  text-align: center; }
+
+.wp-block-embed-facebook {
+  padding: 8px 0px;
+  background: #111; }
+
+.reverseForm {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 5% 0; }
+
+.rating_card {
+  color: #1a1a1a;
+  text-decoration: none;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
+  width: 100%;
+  max-width: 728px;
+  min-height: 260px;
+  margin: 24px auto;
+  border-radius: 4px;
+  border: 3px solid #ddd;
+  cursor: pointer; }
+  @media (max-width: 640px) {
+    .rating_card {
+      padding: 0% 4% 4% 4%;
+      border-left: 0px;
+      border-right: 0px;
+      border-radius: 0px; } }
+  .rating_card_link_wrap {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px; }
+  .rating_card_a {
+    text-decoration: none;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px; }
+  .rating_card_left {
+    width: 100%;
+    position: relative;
+    overflow: hidden; }
+    .rating_card_left figure {
+      margin: 0px; }
+    .rating_card_left p {
+      display: none; }
+  .rating_card_middle {
+    width: 100%;
+    margin: 12px auto;
+    padding: 0px 4%; }
+    .rating_card_middle_title {
+      margin: 0px 0px 8px;
+      padding: 0px; }
+  .rating_card_right {
+    width: 100%;
+    padding: 0px 4%;
+    margin: 0px auto 20px; }
+  .rating_card_shop {
+    width: 50%;
+    min-width: 220px;
+    border: 2px solid #4831ff;
+    padding: 8px 22px 8px 22px;
+    margin: 12px auto 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 12px;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    background-color: #ffffff;
+    border-color: #4831ff;
+    color: #4831ff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.038em; }
+  .rating_card_image {
+    width: 100%;
+    margin-right: 20px;
+    min-height: 100px;
+    background: #ccc; }
+  .rating_card_score {
+    margin: 6px 0px 0px auto;
+    border-radius: 4px;
+    font-size: 1.16rem;
+    color: #4831ff;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 2.4%;
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 0px;
+    border: none;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4); }
+    .rating_card_score_text {
+      display: inline;
+      font-size: 1rem;
+      margin-right: 4%; }
+      .rating_card_score_text:nth-of-type(2) {
+        font-size: 1.2rem; }
+  .rating_card_stars {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    height: 40px;
+    padding: 2.4%;
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 1.16rem;
+    color: orange;
+    position: absolute;
+    top: auto;
+    bottom: 0px;
+    left: 0px;
+    right: auto; }
+  .rating_card p, .rating_card li {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    padding: 0px; }
+  .rating_card_list {
+    list-style: none;
+    list-style-position: outside;
+    padding: 0px;
+    margin: 0px auto;
+    -webkit-columns: 2;
+            columns: 2; }
+    .rating_card_list li {
+      padding-left: 16px; }
+      .rating_card_list li:last-of-type {
+        margin-bottom: 0px; }
+      .rating_card_list li:before {
+        content: '✓';
+        margin-right: 5px;
+        color: #4831ff;
+        position: absolute;
+        left: 0px; }
+  .rating_card:hover {
+    color: #1a1a1a; }
+    .rating_card:hover .rating_card_shop {
+      background-color: #4831ff;
+      color: #fff; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-embed {
+  height: auto;
+  padding: 0px;
+  margin: 12px auto 16px;
+  text-align: center; }
+
+.wp-block-embed-facebook {
+  padding: 8px 0px;
+  background: #111; }
+
+.reverseForm {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 5% 0; }
+
+/**
+ * CSS for both Frontend+Backend.
+ */
+.wp-block-chroma-blocks-image-compare {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+  .wp-block-chroma-blocks-image-compare .compareContainer figure {
+    padding: 0 !important;
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%; }
+
+.compareImg {
+  max-width: 300px !important;
+  max-height: 300px !important;
+  min-width: 300px !important;
+  min-height: 300px !important;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover; }
+
+.compareFig {
+  max-width: 300px !important;
+  max-height: 320px !important;
+  min-width: 300px !important;
+  min-height: 320px !important;
+  padding: 0 !important;
+  margin: 5%;
+  -o-object-fit: cover;
+     object-fit: cover; }
+  @media (min-width: 320px) and (max-width: 480px) {
+    .compareFig {
+      margin: 5% 10%; } }
+
+.figCompareCaption {
+  z-index: 10;
+  text-align: center; }
+  .figCompareCaption a {
+    text-decoration: none;
+    color: grey !important;
+    font-size: 0.9em; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-embed {
+  height: auto;
+  padding: 0px;
+  margin: 12px auto 16px;
+  text-align: center; }
+
+.wp-block-embed-facebook {
+  padding: 8px 0px;
+  background: #111; }
+
+.reverseForm {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 5% 0; }
+
+.content-main .sb, .sb {
+  max-width: 732px;
+  position: relative;
+  width: 100%;
+  margin: 0px auto 12px; }
+  .content-main .sb_bubble, .sb_bubble {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    background: -webkit-linear-gradient(135deg, #4831ff, #3b72ff);
+    background: -o-linear-gradient(135deg, #4831ff, #3b72ff);
+    background: linear-gradient(315deg, #4831ff, #3b72ff);
+    position: absolute;
+    top: 0px;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    text-align: center;
+    overflow: hidden; }
+    .content-main .sb_bubble:after, .sb_bubble:after {
+      content: attr(data-slide-count);
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-shadow: 0px 0px 1.5rem rgba(0, 0, 0, 0.62); }
+  .content-main .sb_h2, .sb_h2 {
+    font-size: 2rem;
+    line-height: 1.35;
+    margin: 16px auto;
+    padding-left: 3.8rem; }
+  .content-main .sb_img, .sb_img {
+    width: 100%; }
+  .content-main .sb_p, .sb_p {
+    max-width: 680px;
+    padding: 0 4%; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-embed {
+  height: auto;
+  padding: 0px;
+  margin: 12px auto 16px;
+  text-align: center; }
+
+.wp-block-embed-facebook {
+  padding: 8px 0px;
+  background: #111; }
+
+.reverseForm {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 5% 0; }
+
+.content-main .sb, .sb {
+  max-width: 732px;
+  position: relative;
+  width: 100%;
+  margin: 0px auto 12px; }
+  .content-main .sb_bubble, .sb_bubble {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    background: -webkit-linear-gradient(135deg, #4831ff, #3b72ff);
+    background: -o-linear-gradient(135deg, #4831ff, #3b72ff);
+    background: linear-gradient(315deg, #4831ff, #3b72ff);
+    position: absolute;
+    top: 0px;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    text-align: center;
+    overflow: hidden; }
+    .content-main .sb_bubble:after, .sb_bubble:after {
+      content: attr(data-slide-count);
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-shadow: 0px 0px 1.5rem rgba(0, 0, 0, 0.62); }
+  .content-main .sb_h2, .sb_h2 {
+    font-size: 2.5rem;
+    line-height: 1.35;
+    margin: 16px auto;
+    font-weight: 700; }
+    .content-main .sb_h2 a, .sb_h2 a {
+      font-weight: normal !important; }
+  .content-main .sb_img, .sb_img {
+    width: 100%; }
+  .content-main .sb_p, .sb_p {
+    max-width: 680px; }
+
+.amazonListItem a {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center; }
+  .amazonListItem a img {
+    width: auto !important;
+    max-width: 300px; }
+
+.amazonListItem figure {
+  padding-bottom: 30% !important;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  margin-left: 0 !important; }
+  .amazonListItem figure img {
+    width: 250px;
+    height: 150px; }

@@ -1,0 +1,43 @@
+!function(oWindow, widgetSettings) {
+	var oDocument = oWindow.document, sWidgets = widgetSettings.widgets;
+	
+	if (sWidgets[0]) {
+		oWindow.siteWidgets ? oWindow.siteWidgets.start(widgetSettings) : !function() {
+			var status, oScript, firstScript;
+			oScript = oDocument.createElement('script'),
+			status = false,
+			firstScript = oDocument.getElementsByTagName('script')[0],
+			oScript.type = 'text/javascript',
+			oScript.async = true,
+			oScript.src = widgetSettings.settings.library,
+			oScript.onload = oScript.onreadystatechange = function() {
+				var state = this.readyState;
+				status || state && state !== 'complete' && state !== 'loaded' || (status = true, oWindow.siteWidgets.start(widgetSettings));
+			},
+			firstScript.parentNode.insertBefore(oScript, firstScript);
+		}();
+		window.fbAsyncInit = function() {FB.init({appId: "589890624510367", version: "v2.5", status: false, xfbml: false, frictionlessRequests: false, cookie: false, hideFlashCallback: null});};
+(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) { return; } js = d.createElement(s); js.id = id; 
+js.src = "//connect.facebook.net/en_US/all.js"; fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));
+	}
+}(window, {
+	widgets: [{"id":74,"name":"Subscribe on Newsletter Page - From emails","sort_order":64,"layout":"modal","settings":{"vertical":false},"template":"normal","type":"subscribe","display":{"start":[],"stop":[],"schedule":{"weekdays":[0,1,2,3,4,5,6]},"hideClose":true},"data":{"description":"Don't miss out on latest Apple news, how tos, or giveaway updates.","success":{"actionDelay":3000,"label":"Thank you!","description":"You have successfully subscribed. <p><br><\/p><p>Make sure that you check your inbox as well as bulk folder for our first message. <\/p>","redirectUrl":"https:\/\/www.idropnews.com","action":"redirect"},"form":{"fields":[{"name":"email","placeholder":"Email address","required":true,"value":"{email}","label":"Email","type":"email"}],"facebookLogin":true,"facebookText":"Log in with Facebook"},"label":"Sign up for updates","textVertically":false,"buttonText":"Sign up","note":"We will not share your information with anyone. See our <a href=\"https:\/\/www.idropnews.com\/privacy-policy\">privacy policy<\/a>.","title":"Sign up to our newsletter"},"style":{"layout":"modal","theme":false,"backColor":"#FFFFFF","headerTextColor":"#000000","textColor":"#696969","buttonColor":"#000000","buttonTextColor":"#FFFFFF","secondaryColor":"333333","secondaryTextColor":"FFFFFF","barBackColor":"#FFFFFF","barTextColor":"#696969","barButtonColor":"#000000","barButtonTextColor":"#FFFFFF","baseColor":"#FFFFFF","font":"Arial, Helvetica, sans-serif","mobileVerticalOffset":0,"animation":"bounceIn"},"tracking":null,"targeting":{"ab":100,"url":[{"include":true,"value":"\/newslettersignup\/"}],"utm":{"include":false,"value":[{"type":"utm_content","value":"tips"}]},"percent":100,"hideAfterHit":false}},{"id":76,"name":"Cookie bar","sort_order":79,"layout":"bottomBar","settings":{"vertical":false},"template":"normal","type":"promo","display":{"start":[],"stop":[],"schedule":{"weekdays":[0,1,2,3,4,5,6]},"onlyWhenUriEmail":true},"data":{"description":"Add a description of your offer, ad or promotion. Explain its features, benefits and advantages.","emailUriVars":["utm_term"],"label":"Check this out!","textVertically":false,"buttonText":"Accept","textType":2,"textMultiline":"<p>We collect cookies, email, and other information according to our <a href=\"https:\/\/www.idropnews.com\/privacy-policy\/\">Privacy Policy<\/a> for a better user experience, analytical, and advertising purposes. User [[url_encoded_email]] gives consent and agrees with information collection on iDrop News.<br><\/p>","labelMobileMultiline":"We collect cookies, email, and other information according to our <a href=\"https:\/\/www.idropnews.com\/privacy-policy\">Privacy Policy<\/a>. User [[url_encoded_email]] gives consent and agrees with iDrop News terms.","dismissWithButton":true,"emailToEsp":true,"mobileLabel":"Check this out!","title":"Check this out!"},"style":{"layout":"bottomBar","theme":true,"baseColor":"#000000","font":"Arial, Helvetica, sans-serif","mobileVerticalOffset":0,"heightPercentage":40,"mobileFullWidth":true,"animation":"slideIn"},"tracking":null,"targeting":{"ab":100,"url":[{"include":true,"value":"\/*"}],"percent":100,"hideAfterHit":true}}],
+	runtime: {
+		trackUrl: "https://api.addmee.net/api/v1/stat",
+		apiUrl: "https://api.addmee.net/api/v1/api",
+		shareByEmailUrl: "https://api.addmee.net/api/v1/share-by-email?u={url}&t={title}&d={description}&logo={logo}",
+		doTrack: true,
+		responsive: {
+			enabled: true,
+			breakpoint: 640
+		},
+		submitUrl: "https://api.addmee.net/api/v1/submit",
+		logoUrl: "https://api.addmee.net?utm_source={site}&utm_medium=referral&utm_term={layout}&utm_content={type}&utm_campaign=Widgets Logo",
+		removeLogo: true,
+		sessionLength: 20,
+		enableGoogleAnalytics: true
+	},
+	settings: {
+		library: "https://api.addmee.net/library/2.2.0"
+	}
+});
